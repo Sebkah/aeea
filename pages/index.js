@@ -3,6 +3,28 @@ import Head from 'next/head';
 import { Inter } from 'next/font/google';
 
 export default function Home() {
+  const getData = async (e) => {
+    e.preventDefault();
+    /*    console.log(e.target.dossierID.value); */
+    const data = { id: e.target.dossierID.value };
+
+    try {
+      const response = await fetch('/api/getData', {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+      });
+      const responseData = await response.json();
+      console.log(responseData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Head>
@@ -11,7 +33,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>Hello Théo Chassouant au téléphone</main>
+
+      <form onSubmit={getData}>
+        <input type="" name="dossierID" label="dossierID" />
+        <button>Envoyer</button>
+      </form>
     </>
   );
 }
