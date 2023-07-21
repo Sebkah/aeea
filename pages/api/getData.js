@@ -5,7 +5,11 @@ import Cors from 'cors';
 // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
 const cors = Cors({
   methods: ['POST', 'GET', 'HEAD'],
-  origin: ['http://localhost:5173', 'http://aeea.preprod.e2.rie.gouv.fr'],
+  origin: [
+    'http://localhost:5173',
+    'http://aeea.preprod.e2.rie.gouv.fr',
+    'https://aeea-front.vercel.app',
+  ],
 });
 
 // Helper method to wait for a middleware to execute before continuing
