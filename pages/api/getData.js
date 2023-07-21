@@ -8,7 +8,7 @@ const cors = Cors({
   origin: [
     'http://localhost:5173',
     'http://aeea.preprod.e2.rie.gouv.fr',
-    /*  'https://aeea-front.vercel.app', */
+    'https://aeea-front.vercel.app',
   ],
 });
 
